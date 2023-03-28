@@ -1,0 +1,34 @@
+{
+    "atomWatch": [
+        {
+            "files": "**/*.scss",
+            "command": "npm run build:css"
+        },
+        {
+            "files": "**/*.js",
+            "command": "npm run build:js"
+        }
+    ],
+    "author": "ICJR",
+    "dependencies": {
+        "@dash-incubator/dapp-sdk": "*",
+        "ui": "git+https://github.com/esportsplus/ui.git"
+    },
+    "description": "ICJR's 100% dApp video uploader",
+    "devDependencies": {
+        "bignumber.js": "^9.0.1",
+        "glob": "^7.1.7",
+        "node-polyfill-webpack-plugin": "^1.1.4",
+        "npm-run-all": "^4.1.3",
+        "webpack": "^5.64.4",
+        "webpack-cli": "^4.9.1"
+    },
+    "name": "video-uploader",
+    "private": false,
+    "scripts": {
+        "build": "run-p build:css build:js",
+        "build:css": "webpack --config node_modules/ui/webpack.sass.config.js --env=input=./src --env=output=./dist/css",
+        "build:js": "webpack --config webpack.javascript.config.js --env=input={%INIT_CWD%/src,%INIT_CWD%/node_modules/ui} --env=output=%INIT_CWD%/dist/js --env=production=true"
+    },
+    "version": "0.0.1"
+}
